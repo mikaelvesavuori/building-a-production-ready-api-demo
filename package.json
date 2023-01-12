@@ -1,0 +1,74 @@
+{
+  "name": "building-a-production-ready-api-demo",
+  "description": "Demonstrates some techniques to achieve production-readiness for a simple system",
+  "version": "1.0.0",
+  "author": "Mikael Vesavuori",
+  "license": "MIT",
+  "keywords": [
+    "demo",
+    "learning",
+    "training",
+    "serverless",
+    "api",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikaelvesavuori/building-a-production-ready-api-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikaelvesavuori/building-a-production-ready-api-demo/issues"
+  },
+  "homepage": "https://github.com/mikaelvesavuori/building-a-production-ready-api-demo",
+  "scripts": {
+    "start:intro": "npx sls offline --config serverless.start.yml --reloadHandler",
+    "start": "npx sls offline --reloadHandler",
+    "test": "npx c8 -reporter=lcov ava",
+    "build": "npx sls package",
+    "deploy": "npx sls deploy",
+    "teardown": "npx sls remove",
+    "scan": "sh scan.sh",
+    "licenses": "npx license-compliance --direct --allow 'MIT;ISC;0BSD;BSD-2-Clause;BSD-3-Clause;Apache-2.0;Unlicense;CC0-1.0'"
+  },
+  "dependencies": {
+    "mikrolog": "2",
+    "mikrometric": "1",
+    "mikrotrace": "2"
+  },
+  "devDependencies": {
+    "@ava/typescript": "3",
+    "@types/aws-lambda": "8",
+    "@types/node": "18",
+    "@typescript-eslint/eslint-plugin": "5",
+    "@typescript-eslint/parser": "5",
+    "ava": "5",
+    "c8": "7",
+    "eslint": "8",
+    "eslint-config-prettier": "8",
+    "eslint-plugin-prettier": "4",
+    "license-compliance": "1",
+    "prettier": "2",
+    "serverless": "3",
+    "serverless-api-gateway-throttling": "2",
+    "serverless-esbuild": "1",
+    "serverless-iam-roles-per-function": "3",
+    "serverless-offline": "12",
+    "serverless-plugin-aws-alerts": "1",
+    "ts-node": "10",
+    "typescript": "4"
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "lib/"
+      },
+      "compile": false
+    },
+    "files": [
+      "tests/unit/**/*.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}

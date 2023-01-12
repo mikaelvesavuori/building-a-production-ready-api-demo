@@ -1,0 +1,20 @@
+service: production-ready-api-demo-start
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: eu-north-1
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+functions:
+  Greeter:
+    handler: start/index.handler
+    description: Greeter (start state)
+    events:
+      - http:
+          method: POST
+          path: /greet

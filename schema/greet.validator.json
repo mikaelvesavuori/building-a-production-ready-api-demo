@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Greeter",
+  "description": "Greets the user",
+  "type": "object",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "pattern": "^[-A-Za-z0-9_@.]{2,20}$"
+    }
+  },
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/name",
+      "type": "string",
+      "title": "name",
+      "description": "Name of the caller"
+    }
+  },
+  "additionalProperties": false
+}
