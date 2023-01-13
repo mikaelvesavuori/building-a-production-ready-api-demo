@@ -24,11 +24,12 @@
     "start:intro": "npx sls offline --config serverless.start.yml --reloadHandler",
     "start": "npx sls offline --reloadHandler",
     "test": "npx c8 -reporter=lcov ava",
+    "test:types": "npx type-coverage --at-least 92 --strict --ignore-files \"tests/**/*.ts\" --ignore-files \"*.ts\" --ignore-files \"src/application/errors/*.ts\" --ignore-files \"testdata/*.ts\"",
+    "test:licenses": "npx license-compliance --direct --allow ''",
+    "test:scan": "sh scan.sh",
     "build": "npx sls package",
     "deploy": "npx sls deploy",
-    "teardown": "npx sls remove",
-    "scan": "sh scan.sh",
-    "licenses": "npx license-compliance --direct --allow 'MIT;ISC;0BSD;BSD-2-Clause;BSD-3-Clause;Apache-2.0;Unlicense;CC0-1.0'"
+    "teardown": "npx sls remove"
   },
   "dependencies": {
     "mikrolog": "2",
@@ -55,6 +56,7 @@
     "serverless-offline": "12",
     "serverless-plugin-aws-alerts": "1",
     "ts-node": "10",
+    "type-coverage": "2",
     "typescript": "4"
   },
   "ava": {
