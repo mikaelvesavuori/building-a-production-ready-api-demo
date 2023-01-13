@@ -25,7 +25,7 @@
     "start": "npx sls offline --reloadHandler",
     "test": "npx c8 -reporter=lcov ava",
     "test:types": "npx type-coverage --at-least 92 --strict --ignore-files \"tests/**/*.ts\" --ignore-files \"*.ts\" --ignore-files \"src/application/errors/*.ts\" --ignore-files \"testdata/*.ts\"",
-    "test:licenses": "npx license-compliance --direct --allow ''",
+    "test:licenses": "npx license-compliance --direct --allow 'MIT;ISC;0BSD;BSD-2-Clause;BSD-3-Clause;Apache-2.0;Unlicense;CC0-1.0'",
     "test:scan": "sh scan.sh",
     "build": "npx sls package",
     "deploy": "npx sls deploy",
