@@ -29,7 +29,8 @@
     "test:scan": "sh scan.sh",
     "build": "npx sls package",
     "deploy": "npx sls deploy",
-    "teardown": "npx sls remove"
+    "teardown": "npx sls remove",
+    "prepare": "husky install"
   },
   "dependencies": {
     "mikrolog": "2",
@@ -47,6 +48,7 @@
     "eslint": "8",
     "eslint-config-prettier": "8",
     "eslint-plugin-prettier": "4",
+    "husky": "8",
     "license-compliance": "1",
     "prettier": "2",
     "serverless": "3",

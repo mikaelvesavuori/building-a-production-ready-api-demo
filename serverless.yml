@@ -34,7 +34,7 @@ package:
 custom:
   config:
     betaVersion: 2
-    emailRecipient: mikaelvesavuori@gmail.com
+    emailRecipient: your-email@provider.com # Set this to your email
   apiGatewayThrottling:
     maxRequestsPerSecond: 50
     maxConcurrentRequests: 50

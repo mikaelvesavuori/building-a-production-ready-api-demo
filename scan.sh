@@ -5,6 +5,14 @@
 REPORT_FOLDER="reports"
 mkdir -p $REPORT_FOLDER
 
+###########
+# Checkov #
+###########
+
+echo "Running checkov..."
+
+checkov -d . > $REPORT_FOLDER/checkov.txt
+
 #########
 # Trivy #
 #########

@@ -1,4 +1,4 @@
-export const handler = async (event) => {
+export const handler = async (event: any) => {
   const body = JSON.parse(event.body);
 
   return {
