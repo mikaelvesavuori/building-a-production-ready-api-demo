@@ -1,12 +1,9 @@
-name: main
+name: release
 
 on:
   push:
-    branches:
-      - 'main'
-  pull_request:
-    branches:
-      - 'main'
+    tags:
+      - "v*"
 
 jobs:
   build-unix:
@@ -34,3 +31,6 @@ jobs:
           npm run test:types
           npm run test:licenses
           npm test
+
+      - name: Deploy
+        run: npm run deploy

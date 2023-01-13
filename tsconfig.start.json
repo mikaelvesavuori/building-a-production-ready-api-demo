@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "target": "es2022"
+  },
+  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./start/*.ts"],
+  "exclude": ["./node_modules/", "./lib/"]
+}

@@ -46,3 +46,16 @@ Which should respond back with:
 ```bash
 "Hi Zelda, Princess of Hyrule!"
 ```
+
+## Things to do
+
+1. Start with `start/index.ts`. What problems and behaviors can you generalize from this simple file?
+2. Move `.eslintrc.json` and `.prettierrc.json` to a temporary folder and reload your IDE. See how the development experience changes when ESLint and Prettier are no longer running.
+3. Compare configs `tsconfig.start.json` and `tsconfig.json`. Running `npx tsc` will break when you use contents of `tsconfig.json`.
+4. Compare configs `serverless.start.yml` and `serverless.yml`.
+5. Compare configs `package.start.json` and `package.json`.
+6. Check out the GitHub Actions workflows in `.github/workflows/`.
+7. Open `src/adapters/Greet.ts`. Notice how it neatly decomposes adapter functionality from the actual business logic. See also how in practice "branching by abstraction" works using a client header as input. Also, for input the use of the `getDTO()` function handles _both_ validation and object structuring.
+8. Open `src/usecases/greet.ts` and `src/usecases/greetBeta.ts`. Notice how dedicated interfaces for input (`InputDTO`) and response (`Response`) make both of them intercompatible.
+9. Look at some of the tests under `tests/`. Notice how the usecase tests cover the majority of the functionality.
+10. Open `scan.sh`. While the script requires local presence of the used tooling, notice how this script would run several tools to handle misconfiguration checking, security scans, and SBOM generation.
