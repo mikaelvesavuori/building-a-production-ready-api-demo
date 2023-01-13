@@ -1,6 +1,8 @@
-# Opinionated minimalist realist serverless starter
+# Building a Production Ready API (demonstration)
 
-Just a sample minimalist starter to run a modern AWS-deployed serverless [TypeScript](https://www.typescriptlang.org) application with some quality-of-life tooling such as [ESLint](https://eslint.org) and [Prettier](https://prettier.io). Packages and deploys using [Serverless Framework](https://www.serverless.com) and bundles it using [esbuild](https://github.com/evanw/esbuild).
+Just a simple demonstration to see some production-readiness patterns applied to a serverless application.
+
+The code sets up a modern AWS-deployed serverless [TypeScript](https://www.typescriptlang.org) application with some quality-of-life tooling such as [ESLint](https://eslint.org) and [Prettier](https://prettier.io). Packages and deploys using [Serverless Framework](https://www.serverless.com) and bundles it using [esbuild](https://github.com/evanw/esbuild).
 
 ## Configurations
 
@@ -8,7 +10,9 @@ Configurations for ESLint and Prettier are reasonable starting points. The TypeS
 
 ## Structure
 
-The application separates AWS Lambda-specific handler stuff in `src/handler.ts` and business/application logic in `src/index.ts`. Tests for the business/application logic are in the `tests` folder and use [AVA](https://github.com/avajs/ava).
+The application starting point is at `start/index.ts`, the more elaborate version is under the `src/` folder.
+
+Tests for the business/application logic are in the `tests/` folder and use [AVA](https://github.com/avajs/ava).
 
 ## Prerequisites
 
@@ -22,6 +26,7 @@ Clone, fork, or download the repo as you normally would. Run `npm install`.
 
 ## Commands
 
+- `npm start:intro`: Run starting state application locally
 - `npm start`: Run application locally
 - `npm test`: Test the business/application logic with AVA
 - `npm run build`: Package application with Serverless Framework
