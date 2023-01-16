@@ -23,20 +23,29 @@ export async function authorizeUseCase(event: EventInput) {
   const logger = MikroLog.start();
 
   try {
-    // @ts-ignore
-    if (event.httpMethod === 'OPTIONS') return handleCors();
-
-    const userAuthToken = event?.headers?.['Authorization'] || '';
-    if (!userAuthToken) throw new MissingAuthorizationHeaderError();
-
-    const isValid = userAuthToken === AUTHORIZATION_TOKEN;
-    if (!isValid) throw new InvalidAuthTokenError();
-
-    return generatePolicy(userAuthToken, 'Allow', event.methodArn, '');
+    return handleRequest(event);
   } catch (error: any) {
-    const message: string = error.message;
-    logger.error(message);
-    const id = event?.headers?.['Authorization'] || 'UNKNOWN';
-    return generatePolicy(id, 'Deny', event.methodArn, {});
+    return handleError(event, error, logger);
   }
+}
+
+function handleRequest(event: EventInput) {
+  // @ts-ignore
+  if (event.httpMethod === 'OPTIONS') return handleCors();
+
+  const userAuthToken = event?.headers?.['Authorization'] || '';
+  if (!userAuthToken) throw new MissingAuthorizationHeaderError();
+
+  const isValid = userAuthToken === AUTHORIZATION_TOKEN;
+  if (!isValid) throw new InvalidAuthTokenError();
+
+  return generatePolicy(userAuthToken, 'Allow', event.methodArn, '');
+}
+
+function handleError(event: EventInput, error: any, logger: MikroLog) {
+  const message: string = error.message;
+  logger.error(message);
+  const id = event?.headers?.['Authorization'] || 'UNKNOWN';
+
+  return generatePolicy(id, 'Deny', event.methodArn, {});
 }

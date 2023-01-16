@@ -6,7 +6,7 @@ import { validateName } from '../../../src/frameworks/validateName';
  * NEGATIVE TESTS
  */
 
-test.serial('It should throw a MissingNameError if missing name', (t) => {
+test('It should throw a MissingNameError if missing name', (t) => {
   const expected = 'MissingNameError';
 
   //@ts-ignore
@@ -15,7 +15,7 @@ test.serial('It should throw a MissingNameError if missing name', (t) => {
   t.is(error.name, expected);
 });
 
-test.serial('It should throw a InvalidNameError if having a bad name', (t) => {
+test('It should throw a InvalidNameError if having a bad name', (t) => {
   const expected = 'InvalidNameError';
 
   const error: any = t.throws(() => validateName('a'));
