@@ -6,12 +6,16 @@ on:
       - "v*"
 
 jobs:
-  build:
+  build-test-deploy:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: ['ubuntu-latest']
         node-version: [18.x]
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,6 +35,30 @@ jobs:
           npm run test:types
           npm run test:licenses
           npm test
+
+      - name: Checkov GitHub Action
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          skip_check: CKV2_GHA_1
+          output_format: cli,sarif
+          output_file_path: console,results.sarif
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: results.sarif
+
+      - name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+
+      - name: Run Syft SBOM action
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
 
       - name: Deploy
         run: npm run deploy
