@@ -1,0 +1,69 @@
+{
+  "asyncapi": "2.6.0",
+  "info": {
+    "title": "Production Ready API Demo",
+    "version": "1.0.0",
+    "contact": {
+      "name": "John Doe",
+      "url": "https://acmecorp.com/docs#owner",
+      "email": "john@acmecorp.xyz"
+    },
+    "description": "The Greet Service takes care of being nice to our users."
+  },
+  "externalDocs": {
+    "description": "Confluence documentation",
+    "url": "https://acmecorp.com/GreetService/docs"
+  },
+  "servers": {
+    "production": {
+      "url": "https://api.acmecorp.com",
+      "protocol": "http",
+      "description": "Production endpoint."
+    }
+  },
+  "channels": {
+    "Greet": {
+      "publish": {
+        "bindings": {
+          "http": {
+            "type": "request",
+            "method": "POST"
+          }
+        },
+        "message": {
+          "$ref": "#/components/messages/Greet"
+        }
+      }
+    }
+  },
+  "components": {
+    "messages": {
+      "Greet": {
+        "name": "Greet",
+        "title": "Greet a user.",
+        "summary": "Returns a randomized greeting phrase for the user.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/GreetInput"
+        }
+      }
+    },
+    "schemas": {
+      "GreetInput": {
+        "type": "object",
+        "description": "Greet user by the provided name.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Customer's name."
+          }
+        },
+        "additionalProperties": false
+      },
+      "GreetOutput": {
+        "type": "string",
+        "description": "Greeting phrase."
+      }
+    }
+  }
+}
