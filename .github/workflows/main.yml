@@ -15,6 +15,10 @@ jobs:
       matrix:
         os: ['ubuntu-latest']
         node-version: [18.x]
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,16 +38,6 @@ jobs:
           npm run test:types
           npm run test:licenses
           npm test
-
-  scan:
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-    runs-on: ubuntu-latest
-    needs: ['build-test']
-    steps:
-      - uses: actions/checkout@v3
 
       - name: Checkov GitHub Action
         uses: bridgecrewio/checkov-action@v12
