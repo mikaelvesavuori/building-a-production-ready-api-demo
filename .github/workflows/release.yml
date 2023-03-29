@@ -56,9 +56,9 @@ jobs:
           scan-ref: '.'
 
       - name: Run Syft SBOM action
-        uses: anchore/sbom-action@v0
+        uses: anchore/sbom-action/publish-sbom@v0
         with:
-          path: .
+          sbom-artifact-match: ".*\\.spdx$"
 
       - name: Deploy
         run: npm run deploy
