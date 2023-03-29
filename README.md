@@ -10,7 +10,7 @@ Configurations for ESLint and Prettier are reasonable starting points. The TypeS
 
 ## Structure
 
-The application starting point is at `start/index.ts`, the more elaborate version is under the `src/` folder.
+The application starting point is at `start/index.js`, the more elaborate final version is under the `src/` folder.
 
 Tests for the business/application logic are in the `tests/` folder and use [AVA](https://github.com/avajs/ava).
 
