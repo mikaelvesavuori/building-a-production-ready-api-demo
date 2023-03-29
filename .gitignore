@@ -1,6 +1,8 @@
 # Files
 .env
 .dccache
+*.bkp
+*.dtmp
 
 # Folders
 node_modules/

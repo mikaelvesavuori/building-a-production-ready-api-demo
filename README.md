@@ -50,7 +50,13 @@ Which should respond back with:
 "Hi Zelda, Princess of Hyrule!"
 ```
 
-## Things to do
+You can get the version 2 response dynamically by using the header `X-Client-Version` with the value `2`.
+
+## Solution diagram
+
+![Solution diagram](./diagrams/diagram.png)
+
+## Things you can do
 
 1. Start with `start/index.js`. What problems and behaviors can you generalize from this simple file?
 2. Move `.eslintrc.json` and `.prettierrc.json` to a temporary folder and reload your IDE. See how the development experience changes when ESLint and Prettier are no longer running.

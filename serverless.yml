@@ -58,6 +58,7 @@ custom:
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
         pattern: '{$.error IS TRUE}'
+        treatMissingData: notBreaching
       clientErrors:
         metric: clientErrors
         threshold: 10
@@ -67,6 +68,7 @@ custom:
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
         pattern: '{$.httpStatusCode >= 400 && $.httpStatusCode < 500}'
+        treatMissingData: notBreaching
       integrationErrors:
         metric: integrationErrors
         threshold: 1
@@ -76,6 +78,7 @@ custom:
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
         pattern: '{$.error IS TRUE && $.message = "Error when calling API*"}'
+        treatMissingData: notBreaching
       latencyErrors:
         namespace: 'AWS/Lambda'
         metric: Duration
@@ -85,6 +88,7 @@ custom:
         evaluationPeriods: 1
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
+        treatMissingData: notBreaching
       serverErrors:
         metric: serverErrors
         threshold: 1
@@ -94,6 +98,7 @@ custom:
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
         pattern: '{$.httpStatusCode >= 500 && $.httpStatusCode < 600}'
+        treatMissingData: notBreaching
       timeoutErrors:
         metric: timeoutErrors
         threshold: 1
@@ -103,6 +108,7 @@ custom:
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanOrEqualToThreshold
         pattern: '{$.error IS TRUE && $.message = "Task timed out"}'
+        treatMissingData: notBreaching
 
 functions:
   Authorizer:
