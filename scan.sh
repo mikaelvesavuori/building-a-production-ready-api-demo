@@ -2,6 +2,13 @@
 
 # Refer to https://github.com/mikaelvesavuori/security-testing-demos for the origin of this content
 
+# Install dependencies
+# brew install checkov
+# brew install aquasecurity/trivy/trivy
+# brew tap anchore/syft
+# brew install syft
+# brew install gitleaks
+
 REPORT_FOLDER="reports"
 mkdir -p $REPORT_FOLDER
 
@@ -28,7 +35,7 @@ trivy fs . > $REPORT_FOLDER/trivy_directory_fs.txt
 
 echo "Running syft to scan source code directory..."
 
-syft packages dir:. > $REPORT_FOLDER/syft_src_dir.txt
+syft packages dir:. --exclude './node_modules/**/*' > $REPORT_FOLDER/syft_src_dir.txt
 
 ############
 # gitleaks #
