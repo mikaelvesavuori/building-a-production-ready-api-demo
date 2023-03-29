@@ -40,11 +40,11 @@ jobs:
           npm test
 
       - name: Run Syft SBOM action
-        uses: anchore/sbom-actionv0
+        uses: anchore/sbom-action@v0
         with:
           path: ./
 
-      - name: Upload
+      - name: Upload SBOM
         uses: anchore/sbom-action/publish-sbom@v0
         with:
           sbom-artifact-match: ".*\\.spdx$"
