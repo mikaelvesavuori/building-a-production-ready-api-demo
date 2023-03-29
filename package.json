@@ -29,6 +29,7 @@
     "test:scan": "sh scan.sh",
     "build": "npx sls package",
     "deploy": "npx sls deploy",
+    "deploy:intro": "npx sls deploy --config serverless.start.yml",
     "teardown": "npx sls remove",
     "prepare": "husky install"
   },

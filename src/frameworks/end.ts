@@ -6,8 +6,6 @@ export function end(
   message?: Record<string, any> | number | string,
   headers?: Record<string, string>
 ) {
-  if (!message) message = '';
-
   return {
     statusCode,
     body: JSON.stringify(message),

@@ -4,9 +4,9 @@ provider:
   name: aws
   runtime: nodejs18.x
   architecture: arm64
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, 'prod'} # Default to production
   region: ${opt:region, 'eu-north-1'}
-  memorySize: ${opt:memory, 256}
+  memorySize: ${opt:memory, 1024}
   timeout: 10
   logRetentionInDays: 7
   versionFunctions: false

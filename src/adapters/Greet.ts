@@ -31,17 +31,19 @@ function handleRequest(event: APIGatewayEvent) {
   const body: Record<string, any> =
     event.body && typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
 
+  // DEMO: Wrangle input into well-known DTO
   const input = getDTO(body);
+
+  // DEMO: Branch by abstraction
   const clientVersion = getClientVersion(event);
   const isUsingOldVersion = clientVersion < BETA_VERSION;
   const headers = getHeaders(isUsingOldVersion);
 
-  // DEMO: Branch by abstraction
   const result = (() => {
     // Run regular version for most users
     if (!clientVersion || isUsingOldVersion) return greetUseCase(input);
     // Run beta version for those explicitly asking for it
-    else return greetBetaUseCase(input);
+    return greetBetaUseCase(input);
   })();
 
   return end(200, result, headers);

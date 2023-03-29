@@ -20,6 +20,6 @@
     "strictFunctionTypes": true,
     "skipLibCheck": true
   },
-  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./start/*.ts"],
+  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./start/*.ts", "./start/*.js"],
   "exclude": ["./node_modules/", "./lib/"]
 }

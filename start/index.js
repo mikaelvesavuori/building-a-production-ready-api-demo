@@ -1,4 +1,4 @@
-export const handler = async (event: any) => {
+const handler = async (event) => {
   const body = JSON.parse(event.body);
 
   return {
@@ -6,3 +6,5 @@ export const handler = async (event: any) => {
     body: JSON.stringify(!body.name ? 'Hi there!' : `Hi ${body.name}!`)
   };
 };
+
+module.exports = { handler };

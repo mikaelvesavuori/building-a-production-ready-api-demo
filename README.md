@@ -27,18 +27,21 @@ Clone, fork, or download the repo as you normally would. Run `npm install`.
 ## Commands
 
 - `npm start:intro`: Run starting state application locally
-- `npm start`: Run application locally
+- `npm start`: Run final state application locally
 - `npm test`: Test the business/application logic with AVA
 - `npm run build`: Package application with Serverless Framework
-- `npm run deploy`: Deploy application to AWS with Serverless Framework
+- `npm run deploy:intro`: Deploy starting state application to AWS with Serverless Framework
+- `npm run deploy`: Deploy final state application to AWS with Serverless Framework
 - `npm run teardown`: Remove stack from AWS
 
 ## Running locally
 
-Using `npm start` you can start using the local endpoint `http://localhost:3000/dev/greet` to call the service.
+_Note that the final state version runs on the `prod` subpath while the starting state is on the `dev` subpath._
+
+Using `npm start` you can start using the local endpoint `http://localhost:3000/prod/greet` to call the service.
 
 ```bash
-curl http://localhost:3000/dev/greet -X POST -d '{ "name": "Zelda, Princess of Hyrule" }'
+curl http://localhost:3000/prod/greet -X POST -d '{ "name": "Zelda, Princess of Hyrule" }'
 ```
 
 Which should respond back with:
@@ -49,7 +52,7 @@ Which should respond back with:
 
 ## Things to do
 
-1. Start with `start/index.ts`. What problems and behaviors can you generalize from this simple file?
+1. Start with `start/index.js`. What problems and behaviors can you generalize from this simple file?
 2. Move `.eslintrc.json` and `.prettierrc.json` to a temporary folder and reload your IDE. See how the development experience changes when ESLint and Prettier are no longer running.
 3. Compare configs `tsconfig.start.json` and `tsconfig.json`. Running `npx tsc` will break when you use contents of `tsconfig.json`.
 4. Compare configs `serverless.start.yml` and `serverless.yml`.
@@ -58,4 +61,6 @@ Which should respond back with:
 7. Open `src/adapters/Greet.ts`. Notice how it neatly decomposes adapter functionality from the actual business logic. See also how in practice "branching by abstraction" works using a client header as input. Also, for input the use of the `getDTO()` function handles _both_ validation and object structuring.
 8. Open `src/usecases/greet.ts` and `src/usecases/greetBeta.ts`. Notice how dedicated interfaces for input (`InputDTO`) and response (`Response`) make both of them intercompatible.
 9. Look at some of the tests under `tests/`. Notice how the usecase tests cover the majority of the functionality.
-10. Open `scan.sh`. While the script requires local presence of the used tooling, notice how this script would run several tools to handle misconfiguration checking, security scans, and SBOM generation.
+10. Check the schema and validation schema in the `schema` folder.
+11. Check the precommit hooks in the `.husky` folder.
+12. Open `scan.sh`. While the script requires local presence of the used tooling, notice how this script would run several tools to handle misconfiguration checking, security scans, and SBOM generation.
